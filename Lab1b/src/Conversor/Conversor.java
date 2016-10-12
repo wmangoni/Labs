@@ -9,6 +9,20 @@ public class Conversor {
 	public void convertFahrenheitInCelsius(double fahrenheit) {
 		this.setTemp( (fahrenheit - 32) * 5/9 );
 	}
+	public void convertKelvinInCelsius(double kelvin) {
+		this.setTemp( kelvin - 273.15 );
+	}
+	public void convertCelsiusInKelvin(double celsius) {
+		this.setTemp( celsius + 273.15 );
+	}
+	public void convertFahrenheitInKelvin(double fahrenheit) {
+		this.convertFahrenheitInCelsius(fahrenheit);
+		this.convertCelsiusInKelvin(this.temp);
+	}
+	public void convertKelvinInFahrenheit(double kelvin) {
+		this.convertKelvinInCelsius(kelvin);
+		this.convertCelsiusInFahrenheit(this.temp);
+	}
 
 	public void setTemp(double temp) {
 		this.temp = temp;

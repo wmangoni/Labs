@@ -8,6 +8,14 @@ public class ConversorTestDrive {
 		c.print();
 		c.convertFahrenheitInCelsius(104.0);
 		c.print();
+		c.convertCelsiusInKelvin(40.00);
+		c.print();
+		c.convertKelvinInCelsius(313.15);
+		c.print();
+		c.convertKelvinInFahrenheit(313.15);
+		c.print();
+		c.convertFahrenheitInKelvin(104.00);
+		c.print();
 	}
 
 }
