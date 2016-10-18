@@ -3,11 +3,11 @@ package MorseDecoder;
 public class MorseDecoder {
 	
 	private String msg;
-	private String code;
+	private Dicionario dc;
 	
 	public MorseDecoder(String msg) {
+		dc = new Dicionario(); 
 		this.setMsg(msg);
-		this.decoder(this.getMsg());
 	}
 	public void setMsg(String msg) {
 		this.msg = msg;
@@ -15,17 +15,32 @@ public class MorseDecoder {
 	public String getMsg() {
 		return this.msg;
 	}
-	public void setCode(String code) {
-		this.code = code;
-	}
-	public String getCode() {
-		return this.code;
-	}
-	private void decoder(String msg) {
-		String[] split = msg.split(" ");
-		for (String string : split) {
-			string.toUpperCase();
+	public String encoder(String msg) {
+		msg = msg.toLowerCase();
+		String[] palavras = msg.split(" ");
+		String[] letras = null;
+		String result = "";
+		for (String string : palavras) {
+			letras = string.split("");
+			for (String str : letras) {
+				result += dc.encode(str) + " ";
+			}
+			result += "   ";
 		}
+		return result.substring( 0, result.length() - 4 );
+	}
+	public String decoder(String msg) {
+		String[] palavras = msg.split("   ");
+		String[] letras = null;
+		String result = "";
+		for (String string : palavras) {
+			letras = string.split(" ");
+			for (String str : letras) {
+				result += dc.decode(str);
+			}
+			result += " ";
+		}
+		return result.substring( 0, result.length() - 1 );
 	}
 	
 }
